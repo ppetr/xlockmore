@@ -1,0 +1,5 @@
+/config.*
+**/Makefile
+modes/*.x[bp]m
+xglock/xglock
+xlock/xlock
