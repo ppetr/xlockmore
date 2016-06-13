@@ -462,6 +462,7 @@ static XrmOptionDescRec genTable[] =
 	{(char *) "-invalidsound", (char *) ".invalidsound", XrmoptionSepArg, (caddr_t) NULL},
 #endif
 	{(char *) "-startCmd", (char *) ".startCmd", XrmoptionSepArg, (caddr_t) NULL},
+	{(char *) "-invalidCmd", (char *) ".invalidCmd", XrmoptionSepArg, (caddr_t) NULL},
 	{(char *) "-endCmd", (char *) ".endCmd", XrmoptionSepArg, (caddr_t) NULL},
 #ifndef VMS
 	{(char *) "-pipepassCmd", (char *) ".pipepassCmd", XrmoptionSepArg, (caddr_t) NULL},
@@ -685,6 +686,7 @@ static OptionStruct opDesc[] =
 	{(char *) "-invalidsound string", (char *) "sound to use when password is invalid"},
 #endif
 	{(char *) "-startCmd string", (char *) "command to run at locktime"},
+	{(char *) "-invalidCmd string", (char *) "command to run when password is invalid"},
 	{(char *) "-endCmd string", (char *) "command to run when unlocking"},
 #ifndef VMS
 	{(char *) "-pipepassCmd string", (char *) "command into which to pipe the password when unlocking"},
@@ -854,6 +856,7 @@ char       *invalidsound;
 #endif
 
 char       *startCmd;
+char       *invalidCmd;
 char       *endCmd;
 #ifndef VMS
 char       *pipepassCmd;
@@ -982,6 +985,7 @@ static argtype genvars[] =
 	{(void *) & invalidsound, (char *) "invalidsound", (char *) "InvalidSound", (char *) DEF_INVALIDSOUND, t_String},
 #endif
 	{(void *) & startCmd, (char *) "startCmd", (char *) "StartCmd", (char *) "", t_String},
+	{(void *) & invalidCmd, (char *) "invalidCmd", (char *) "InvalidCmd", (char *) "", t_String},
 	{(void *) & endCmd, (char *) "endCmd", (char *) "EndCmd", (char *) "", t_String},
 #ifndef VMS
 	{(void *) & pipepassCmd, (char *) "pipepassCmd", (char *) "PipePassCmd", (char *) "", t_String},

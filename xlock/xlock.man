@@ -267,6 +267,9 @@ xlock \- Locks the local X display until a password is entered.
 .BI \-startCmd " string"
 ]
 [
+.BI \-invalidCmd " string"
+]
+[
 .BI \-endCmd " string"
 ]
 [
@@ -1593,6 +1596,11 @@ Text
 .I string
 command to execute when the screen is locked. Commonly used instructions include:
 "zaway". This command, if still running when the screensaver exits, will be killed.
+.TP 5
+.BI \-invalidCmd \ string
+Text
+.I string
+command to execute when a password is invalid.
 .TP 5
 .BI \-endCmd \ string
 Text

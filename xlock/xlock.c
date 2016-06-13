@@ -848,6 +848,7 @@ extern Bool sound;
 #endif
 
 extern char *startCmd;
+extern char *invalidCmd;
 extern char *endCmd;
 #ifndef VMS
 extern char *pipepassCmd;
@@ -2682,6 +2683,18 @@ getPassword(void)
 				putText(dsp, Scr[screen].window, Scr[screen].textgc,
 					"\n", False, left, &x, &y);
 				free(cnt);
+		}
+	}
+
+	if (invalidCmd && *invalidCmd) {
+	    pid_t cmd_pid;
+		if ((cmd_pid = FORK()) == -1) {
+			(void) fprintf(stderr, "Failed to launch \"%s\"\n", invalidCmd);
+			perror(ProgramName);
+			cmd_pid = 0;
+		} else if (!cmd_pid) {
+			(void) system(invalidCmd);
+			exit(0);
 		}
 	}
 

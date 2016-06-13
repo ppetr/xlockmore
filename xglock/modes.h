@@ -618,6 +618,7 @@ struct_option_gen generalOpt[] =
   {"logoutFailedString", "logoutFailedString", "Text string is shown when a logout is attempted and fails", "gen_opt_", (GtkWidget *)NULL},
 #endif
   {"startCmd", "startCmd", "Command to execute when the screen is locked", "gen_opt_", (GtkWidget *)NULL},
+  {"invalidCmd", "invalidCmd", "Command to execute when an invalid password is entered", "gen_opt_", (GtkWidget *)NULL},
   {"endCmd", "endCmd", "Command to execute when the screen is unlocked", "gen_opt_", (GtkWidget *)NULL},
   {"pipepassCmd", "pipepassCmd", "Command into which to pipe the password when the screen is unlocked", "gen_opt_", (GtkWidget *)NULL},
 #if defined( USE_AUTO_LOGOUT ) || defined( USE_BUTTON_LOGOUT )
