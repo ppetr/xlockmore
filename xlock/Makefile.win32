@@ -1,0 +1,55 @@
+# build applications
+CC=i686-w64-mingw32-gcc
+CXX=i686-w64-mingw32-g++
+#CC=gcc-3
+#CXX=g++-3
+
+# compiler flags
+CFLAGS	=	-DWIN32 -DUSE_GL -DHAVE_CXX -mwindows -O2 -Wall
+CFLAGS	+=	-DCOMPLIANT_COLORMAP -DSYSV -DHAVE_SYS_TIME_H
+#CFLAGS	+=	-mno-cygwin
+#CFLAGS	+=	-DRANDOMMODE
+#CFLAGS	+=	-DDEBUG -D_DEBUG
+
+# Include & Library directories
+INCS=-I/usr/include/w32api -I../win32
+
+# sources
+SRC=	automata.c	\
+	color.c		\
+	erase.c		\
+	iostuff.c	\
+	mode.c		\
+	parsecmd.c	\
+	random.c	\
+	ras.c		\
+	resource.c	\
+	spline.c	\
+	util.c		\
+	vis.c		\
+	visgl.c		\
+	xbm.c		\
+	xlock.c		\
+	xlockimage.c
+
+# objects
+OBJS=	$(SRC:.c=.o)
+
+# general rules
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCS)
+
+.cc.o:
+	$(CXX) $(CFLAGS) -c -o $@ $< $(INCS)
+
+# specific rules
+all:	$(OBJS)
+
+clean:
+	rm -f *.o *~
+
+antic:
+	antic *.h *.c
+
+cppcheck:
+	cppcheck -f -q *.c
